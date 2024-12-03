@@ -2,7 +2,10 @@ import { useState } from "react";
 import MyContext from "./MyContext";
 
 // const api_domain = "http://localhost:3500/api/";
-const api_domain = "https://busy-cow-sock.cyclic.app/api/";
+// const api_domain = "https://api.cyberbriefs.org/airwayz/";
+const api_domain = "https://semantic.onesmarter.com/airwayz/";
+
+// const api_domain = "https://hrrwc7nhpj.execute-api.us-east-2.amazonaws.com/airwayz/"
 
 const MyProvider = ({ children }) => {
   const [dealStatusObj, setDealStatusObj] = useState({});

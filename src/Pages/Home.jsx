@@ -261,39 +261,7 @@ const [dependencies, setDependencies] =  useState({});
     }
   };
 
-  const handleSave = async () => {
-    console.log(saveArr, "savearr");
-    let saveObj = {
-      data: saveArr,
-    };
-
-    try {
-      //   if(solutionArr.length>0){
-      //   const response = await axios.post(`${api_domain}save/adddata`, saveObj);
-      //   console.log(response.status);
-      //   if(response.status === 201){
-      //     getSaveData();
-      //     toast({
-      //       title: "The data has been successfully stored.",
-      //       status: "success",
-      //       duration: 3000,
-      //       isClosable: true,
-      //       position: "top",
-      //     });
-      //   }
-      // }
-      // else{
-      //   toast({
-      //     title: "There are no computations to preserve.",
-      //     status: "error",
-      //     duration: 6000,
-      //     isClosable: true,
-      //     position: "top",
-      //   });
-      // }
-    } catch (error) {}
-  };
-
+  
   const getDependencies = async()=>{
     try {
       

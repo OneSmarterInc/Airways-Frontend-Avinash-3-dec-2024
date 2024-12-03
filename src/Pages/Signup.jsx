@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   Flex,
   Heading,
@@ -19,11 +19,14 @@ import {
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import MyContext from "../Component/ContextApi/MyContext";
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
 
 const Signup = () => {
+  const {api_domain} = useContext(MyContext);
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -58,7 +61,7 @@ const Signup = () => {
       }
       else{
         const response = await axios.post(
-          "http://localhost:3500/api/user/signup",
+          `${api_domain}user/signup`,
           data
         );
   

@@ -14,11 +14,13 @@ import {
   Th,
   Td,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { MdDelete } from "react-icons/md";
+import MyContext from "./ContextApi/MyContext";
 
 const ManageEmployees = () => {
+  const {api_domain} = useContext(MyContext);
   const [employeeData, setEmployeeData] = useState({
     username: "",
     email: "",
@@ -59,7 +61,7 @@ const ManageEmployees = () => {
         });
       } else {
         let res = await axios.post(
-          `http://localhost:3500/api/admin/signup`,
+          `${api_domain}/admin/signup`,
           employeeData
         );
         console.log(res);
@@ -100,7 +102,7 @@ const ManageEmployees = () => {
 
   const getEmployees = async () => {
     try {
-      let data = await axios.get("http://localhost:3500/api/admin/list");
+      let data = await axios.get(`${api_domain}admin/list`);
       console.log(data);
       if (data.status === 201) {
         setEmployees(data.data.result);
@@ -119,7 +121,7 @@ const ManageEmployees = () => {
   const handleDelete = async (id) => {
     try {
       //  axios.delete(`http://localhost:3500/api/admin/list/${id}`);
-      await axios.delete(`http://localhost:3500/api/admin/list/${id}`);
+      await axios.delete(`${api_domain}admin/list/${id}`);
       // After successful deletion, update the employees state
       setEmployees((prevEmployees) =>
         prevEmployees.filter((employee) => employee._id !== id)
@@ -145,7 +147,7 @@ const ManageEmployees = () => {
   useEffect(() => {
     getEmployees();
   }, []);
-  console.log("aa", employees);
+  // console.log("aa", employees);
 
   return (
     <Box border={"0px solid black"} w={"100%"} m={"auto"} h={"100%"} textAlign={"center"}>
